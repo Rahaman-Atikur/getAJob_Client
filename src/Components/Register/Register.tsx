@@ -1,16 +1,26 @@
 // import Lottie from "lottie-react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
+import { use } from "react";
 // import registerLottie from "../../assets/register.json";
 
 const Register = () => {
+  const { createUser } = use(AuthContext);
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
-    
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email");
     const password = formData.get("password");
     console.log(email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -43,7 +53,9 @@ const Register = () => {
                   Already Have an account ?
                 </NavLink>
               </div>
-              <button type="submit"  className="btn btn-neutral mt-4">Register</button>
+              <button type="submit" className="btn btn-neutral mt-4">
+                Register
+              </button>
             </form>
           </div>
         </div>

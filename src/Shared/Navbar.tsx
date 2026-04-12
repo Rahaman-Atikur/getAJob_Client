@@ -28,11 +28,12 @@ const Navbar = () => {
       </div>
      
       <div className="navbar-end">
-        <NavLink to="/contact" className="btn">
-          Login
-        </NavLink>
+        
         <NavLink to="/register" className="btn">
           Register
+        </NavLink>
+         <NavLink to="/signin" className="btn">
+          Sign In
         </NavLink>
       </div>
     </div>

@@ -16,11 +16,15 @@ export type AuthContextType = {
 
 const AuthProvider = ({ children }: authProviderProps) => {
   const [loading, setLoading] = useState<boolean>(true);
+  // Creating user with email and password
   const createUser = (email: string, password: string) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  //Sign in with email and password
+  
+  //Contexting the auth info
   const authInfo: AuthContextType = {
     loading,
     createUser,

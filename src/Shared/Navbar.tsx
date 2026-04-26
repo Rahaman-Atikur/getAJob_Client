@@ -1,9 +1,19 @@
-import { use } from "react";
+import { use, useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/Auth-Context/AthenticationContext";
 
 const Navbar = () => {
-  const { user , signOutUser} = use(AuthContext);
+  type userType ={
+    id: number,
+    email: string,
+    password: string
+
+  } 
+  type AuthContextType = {
+    user: userType | null;
+    signOutUser: () => void;
+  };
+  const { user : userType , signOutUser} = useContext(AuthContext) as AuthContextType;
 
   const handleSignOut = () =>{
     signOutUser()
@@ -52,6 +62,9 @@ const Navbar = () => {
               </NavLink>
               <NavLink to="/signin" className="btn">
                 Sign In
+              </NavLink>
+               <NavLink to="/" className="btn">
+                Home
               </NavLink>
             </div>
           </>

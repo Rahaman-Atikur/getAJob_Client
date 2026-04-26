@@ -1,4 +1,5 @@
 // import Lottie from "lottie-react";
+
 import { NavLink } from "react-router";
 // import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
 import { createContext, use } from "react";
@@ -10,7 +11,7 @@ import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
 // const AuthContext = createContext<AuthContextType | null>(null);
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser } = use((AuthContext) as React.Context<{ createUser: (email: string, password: string) => Promise<any> }> );
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

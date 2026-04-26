@@ -1,5 +1,6 @@
 import { createContext } from "react";
 
+
 export type AuthContextType = {
   createUser: (email: string, password: string) => Promise<any>;
 };

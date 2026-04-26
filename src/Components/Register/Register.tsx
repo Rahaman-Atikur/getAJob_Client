@@ -1,8 +1,13 @@
 // import Lottie from "lottie-react";
 import { NavLink } from "react-router";
+// import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
+import { createContext, use } from "react";
 import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
-import { use } from "react";
 // import registerLottie from "../../assets/register.json";
+// type  AuthContextType ={
+//   createUser:(email: string,password:string)=>Promise<void>
+// }
+// const AuthContext = createContext<AuthContextType | null>(null);
 
 const Register = () => {
   const { createUser } = use(AuthContext);
@@ -10,16 +15,17 @@ const Register = () => {
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
     console.log(email, password);
+    if(!email || !password) return;
 
-    createUser(email, password)
+   createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        console.log("User created:", result);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Registration error:", error);
       });
   };
 

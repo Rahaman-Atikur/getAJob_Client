@@ -1,6 +1,7 @@
-import { use, useContext } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/Auth-Context/AthenticationContext";
+import { auth } from "../Firebase/firebase.init";
 
 const Navbar = () => {
   type userType ={
@@ -11,9 +12,12 @@ const Navbar = () => {
   } 
   type AuthContextType = {
     user: userType | null;
-    signOutUser: () => void;
+    signOutUser: () => void | null;
   };
-  const { user : userType , signOutUser} = useContext(AuthContext) as AuthContextType;
+  if (!AuthContext) {
+  throw new Error("AuthContext not provided");
+}
+  const { user  , signOutUser} = useContext(AuthContext) as AuthContextType;
 
   const handleSignOut = () =>{
     signOutUser()

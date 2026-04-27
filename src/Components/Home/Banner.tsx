@@ -1,5 +1,5 @@
 import React from 'react';
-import {motion} from 'motion/react';
+
 
 
 const Banner = () => {
@@ -11,9 +11,7 @@ const Banner = () => {
       className="max-w-sm rounded-lg shadow-2xl"
     />
     <div>
-      <motion.h1 
-      animate = {{rotate:180, transition:{duration:4}}}
-      className="text-5xl font-bold">Latest Jobs for You!</motion.h1>
+      
       <p className="py-6">
         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
         quasi. In deleniti eaque aut repudiandae et a id nisi.

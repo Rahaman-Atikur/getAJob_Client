@@ -1,4 +1,5 @@
 import React from 'react';
+import {motion} from 'motion/react';
 
 
 
@@ -17,6 +18,10 @@ const Banner = () => {
         quasi. In deleniti eaque aut repudiandae et a id nisi.
       </p>
       <button className="btn btn-primary">Get Started</button>
+      <motion.h1
+      animate={{rotate:360,transition:{duration:2}}}
+      
+      >Hi Its my first animation</motion.h1>
     </div>
   </div>
 </div>

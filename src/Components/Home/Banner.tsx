@@ -16,8 +16,9 @@ const Banner = () => {
 
         
          <div className="absolute top-0 left-0">
-           <p >The Easiest Way to Find Your <span className="text-purple-500">First</span>  Dream Job</p>
-          <img src="/public/picture/team1.jpg" alt="" />
+           <p className="text-black" >The Easiest Way to Find Your <span className="text-purple-500">First</span>  Dream Job</p>
+          <img className="w-sm" src="/public/picture/team1.jpg" alt="" />
+          <img className="w-sm h-min" src="/public/picture/team3.jpg" alt="" />
          </div>
         
 

@@ -1,6 +1,6 @@
 import React from "react";
 // import { motion } from "motion/react";
-import {backgroundImage} from "../../../public/picture/Background.jpg"
+
 
 
 
@@ -9,25 +9,22 @@ const Banner = () => {
   return (
 
     <>
-    {/* Full Background Content */}
-    <div className="h-full w-full">
-      <img src={backgroundImage} alt="Background" />
 
-    </div>
-    {/* First Banner Content(Text) */}
-    <div >
-      <p>The Easiest Way to Find Your <span className="text-purple-500">First</span>  Dream Job</p>
+      <div className="relative">
 
-    </div>
+        <img src="/public/picture/Background.jpg" alt="Background" />
+
+        
+         <div className="absolute top-0 left-0">
+           <p >The Easiest Way to Find Your <span className="text-purple-500">First</span>  Dream Job</p>
+          <img src="/public/picture/team1.jpg" alt="" />
+         </div>
+        
+
+      </div>
 
 
-    {/* Second Banner Content(Picture) */}
-    <div>
 
-    </div>
-
-    
-    
     </>
   );
 };

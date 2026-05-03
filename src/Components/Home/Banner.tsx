@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "motion/react";
+// import { motion } from "motion/react";
+import {backgroundImage} from "../../../public/picture/Background.jpg"
 
 
 
@@ -7,20 +8,27 @@ const Banner = () => {
 
   return (
 
-    <div className="hero bg-base-200 min-h-screen">
-      
-      <div className="hero-content flex-col lg:flex-row">
-      
-      
-        
+    <>
+    {/* Full Background Content */}
+    <div className="h-full w-full">
+      <img src={backgroundImage} alt="Background" />
 
-          <motion.img
-          animate = {{rotate:360   , transition:{duration:3}}}
-          
-          src="/public/picture/Job.jpg" alt="" />
-
-      </div>
     </div>
+    {/* First Banner Content(Text) */}
+    <div >
+      <p>The Easiest Way to Find Your <span className="text-purple-500">First</span>  Dream Job</p>
+
+    </div>
+
+
+    {/* Second Banner Content(Picture) */}
+    <div>
+
+    </div>
+
+    
+    
+    </>
   );
 };
 

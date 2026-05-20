@@ -30,6 +30,11 @@ const Register = () => {
       });
   };
 
+  // Google Register Handler
+  const handleGoogleRegister=()=>{
+    
+  }
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -65,7 +70,7 @@ const Register = () => {
               </button>
 
               {/* Google Register Button */}
-              <button type="submit" className="btn bg-black text-white  mt-0.5">
+              <button type="button" onClick={handleGoogleRegister} className="btn bg-black text-white  mt-0.5">
                 <svg
                   aria-label="Google logo"
                   width="16"

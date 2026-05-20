@@ -65,7 +65,7 @@ const Register = () => {
               </button>
 
               {/* Google Register Button */}
-              <button className="btn bg-black text-white  mt-0.5">
+              <button type="submit" className="btn bg-black text-white  mt-0.5">
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -95,6 +95,9 @@ const Register = () => {
                 </svg>
                 Register with Google
               </button>
+
+
+
             </form>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
 
 const SignIn = () => {
-  const { signInUser } = use(AuthContext);
+  const { signInUser, signInWithGoogle } = use(AuthContext);
 
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +20,17 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  // Google Sign in Handler
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log("User signed in with Google:", result.user);
+      })
+      .catch((error) => {
+        console.error("Google sign-in error:", error);
       });
   };
 
@@ -59,7 +70,11 @@ const SignIn = () => {
 
               {/* Google login button */}
 
-              <button className="btn bg-black text-white  mt-0.5">
+              <button
+                type="button"
+                onClick={handleGoogleSignIn}
+                className="btn bg-black text-white  mt-0.5"
+              >
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -89,8 +104,6 @@ const SignIn = () => {
                 </svg>
                 Sign In with Google
               </button>
-
-
             </form>
           </div>
         </div>

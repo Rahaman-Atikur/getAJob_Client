@@ -11,7 +11,12 @@ import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
 // const AuthContext = createContext<AuthContextType | null>(null);
 
 const Register = () => {
-  const { createUser } = use((AuthContext) as React.Context<{ createUser: (email: string, password: string) => Promise<any> }> );
+  const { createUser, signInWithGoogle } = use(
+    AuthContext as React.Context<{
+      createUser: (email: string, password: string) => Promise<any>;
+      signInWithGoogle: () => Promise<any>;
+    }>,
+  );
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,9 +24,9 @@ const Register = () => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
     console.log(email, password);
-    if(!email || !password) return;
+    if (!email || !password) return;
 
-   createUser(email, password)
+    createUser(email, password)
       .then((result) => {
         console.log("User created:", result);
       })
@@ -31,9 +36,15 @@ const Register = () => {
   };
 
   // Google Register Handler
-  const handleGoogleRegister=()=>{
-    
-  }
+  const handleGoogleRegister = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log("User registered with Google:", result);
+      })
+      .catch((error) => {
+        console.error("Google registration error:", error);
+      });
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -70,7 +81,11 @@ const Register = () => {
               </button>
 
               {/* Google Register Button */}
-              <button type="button" onClick={handleGoogleRegister} className="btn bg-black text-white  mt-0.5">
+              <button
+                type="button"
+                onClick={handleGoogleRegister}
+                className="btn bg-black text-white  mt-0.5"
+              >
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -100,9 +115,6 @@ const Register = () => {
                 </svg>
                 Register with Google
               </button>
-
-
-
             </form>
           </div>
         </div>

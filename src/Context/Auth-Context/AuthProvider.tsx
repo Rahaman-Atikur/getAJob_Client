@@ -5,9 +5,10 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup,
   type UserCredential,
 } from "firebase/auth";
-import { auth } from "../../Firebase/firebase.init";
+import { auth, googleProvider } from "../../Firebase/firebase.init";
 
 type authProviderProps = {
   children: ReactNode;
@@ -16,12 +17,12 @@ export type AuthContextType = {
   loading: boolean;
   createUser: (email: string, password: string) => Promise<UserCredential>;
   signInUser: (email: string, password: string) => Promise<UserCredential>;
+  signInWithGoogle: () => Promise<UserCredential>;
   user: string | null;
-  currentUser : string | null;
+  currentUser: string | null;
 };
 
 const AuthProvider = ({ children }: authProviderProps) => {
-
   const [loading, setLoading] = useState<boolean>(true);
   const [user, setUser] = useState<string | null>(null);
 
@@ -36,12 +37,16 @@ const AuthProvider = ({ children }: authProviderProps) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  // Signout User
-  const signOutUser = ()=>{
+  // Sign in with Google
+  const signInWithGoogle = () => {
     setLoading(true);
-     return signOut(auth);
-  }
-
+    return signInWithPopup(auth, googleProvider);
+  };
+  // Signout User
+  const signOutUser = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -52,12 +57,12 @@ const AuthProvider = ({ children }: authProviderProps) => {
     return () => unSubscribe();
   }, []);
 
-
   //Contexting the auth info
   const authInfo: AuthContextType = {
     loading,
     createUser,
     signInUser,
+    signInWithGoogle,
     user,
     signOutUser,
   };

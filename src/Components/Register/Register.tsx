@@ -2,8 +2,9 @@
 
 import { NavLink } from "react-router";
 // import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
-import { createContext, use } from "react";
+import { use } from "react";
 import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
+import type { UserCredential } from "firebase/auth";
 // import registerLottie from "../../assets/register.json";
 // type  AuthContextType ={
 //   createUser:(email: string,password:string)=>Promise<void>
@@ -13,8 +14,8 @@ import { AuthContext } from "../../Context/Auth-Context/AthenticationContext";
 const Register = () => {
   const { createUser, signInWithGoogle } = use(
     AuthContext as React.Context<{
-      createUser: (email: string, password: string) => Promise<any>;
-      signInWithGoogle: () => Promise<any>;
+      createUser: (email: string, password: string) => Promise<UserCredential>;
+      signInWithGoogle: () => Promise<UserCredential>;
     }>,
   );
 

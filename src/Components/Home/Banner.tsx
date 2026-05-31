@@ -6,7 +6,7 @@ const Banner = () => {
       <div className="relative">
         <img src="/public/picture/Background.jpg" alt="Background" />
 
-        <div className="absolute top-0 left-0">
+        <div className="absolute top-0 left-0 overflow-hidden">
           <div className="flex">
             <div className="w-2/5">
               <p className="text-black">
@@ -20,22 +20,26 @@ const Banner = () => {
               </p>
             </div>
 
-            <div className="w-3/5 flex mt-20 gap-2">
-              <motion.img
-                animate={{ y: [0, -30, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 flex-1 border-black border-4 border-dashed  "
-                src="/public/picture/team1.jpg"
-                alt=""
-              />
+            <div className="w-3/5 flex mt-20 gap-2 overflow-hidden">
+              <div className="flex-1 overflow-hidden">
+                <motion.img
+                  animate={{ y: [0, -30, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-full border-black border-4 border-dashed"
+                  src="/public/picture/team1.jpg"
+                  alt=""
+                />
+              </div>
 
-              <motion.img
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-2 overflow-hidden h-min flex-1  border-black border-4 border-dashed"
-                src="/public/picture/team3.jpg"
-                alt=""
-              />
+              <div className="flex-1 overflow-hidden">
+                <motion.img
+                  animate={{ x: [0, 10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-full h-min border-black border-4 border-dashed"
+                  src="/public/picture/team3.jpg"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>

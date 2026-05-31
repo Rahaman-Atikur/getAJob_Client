@@ -7,6 +7,7 @@ import {
   signOut,
   signInWithPopup,
   type UserCredential,
+  type User,
 } from "firebase/auth";
 import { auth, googleProvider } from "../../Firebase/firebase.init";
 
@@ -18,13 +19,13 @@ export type AuthContextType = {
   createUser: (email: string, password: string) => Promise<UserCredential>;
   signInUser: (email: string, password: string) => Promise<UserCredential>;
   signInWithGoogle: () => Promise<UserCredential>;
-  user: string | null;
-  currentUser: string | null;
+  signOutUser: () => Promise<void>;
+  user: User | null;
 };
 
 const AuthProvider = ({ children }: authProviderProps) => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   // Creating user with email and password
   const createUser = (email: string, password: string) => {

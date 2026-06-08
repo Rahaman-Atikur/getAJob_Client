@@ -44,6 +44,20 @@ const Banner = () => {
           </div>
         </div>
       </div>
+      
+      {/* Test for preparing React document  */}
+      
+      <div className="text-center mt-10 text-white">
+        <h2 className="text-3xl font-bold">Welcome to Our Job Portal</h2>
+      </div>
+     
+
+
+     f
+
+      
+
+    
     </>
   );
 };
